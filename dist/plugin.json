@@ -1,25 +1,30 @@
 {
-  "type": "panel",
-  "name": "Singlestat Math",
-  "id": "blackmirror1-singlestat-math-panel",
-
-  "info": {
-    "description": "Single Stat panel with math.",
-    "author": {
-      "name": "Sandeep",
-      "url": "https://github.com/black-mirror-1/singlestat-math"
+    "$schema": "https://raw.githubusercontent.com/grafana/grafana/main/docs/sources/developers/plugins/plugin.schema.json",
+    "type": "panel",
+    "name": "Singlestat Math",
+    "id": "blackmirror1-singlestat-math-panel",
+    "info": {
+        "description": "Single Stat panel with math.",
+        "author": {
+            "name": "Sandeep",
+            "url": "https://github.com/black-mirror-1/singlestat-math"
+        },
+        "keywords": [
+            "singlestat",
+            "math",
+            "panel"
+        ],
+        "logos": {
+            "small": "img/icn-singlestatmath-panel.svg",
+            "large": "img/icn-singlestatmath-panel.svg"
+        },
+        "version": "2.0.0",
+        "updated": "2025-12-09",
+        "links": []
     },
-    "keywords": ["singlestat", "math", "panel"],
-    "logos": {
-      "small": "img/icn-singlestatmath-panel.svg",
-      "large": "img/icn-singlestatmath-panel.svg"
+    "dependencies": {
+        "grafanaDependency": ">=10.4.0",
+        "plugins": []
     },
-    "version": "1.1.7",
-    "updated": "2018-10-24"
-  },
-
-  "dependencies": {
-    "grafanaVersion": "5.0.0",
-    "plugins": [ ]
-  }
+    "buildMode": "production"
 }

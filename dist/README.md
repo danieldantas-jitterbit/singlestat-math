@@ -1,6 +1,16 @@
 # Single Stat Math Panel
 
-This panel is a modification of the native single stat panel to support math functions across series.
+This panel is a modification of the native single stat panel to support math functions across series.  
+As of v2 the plugin is implemented in React and compiled with the Grafana plugin tools, making it compatible with Grafana 12+.
+
+## Development
+
+1. Install dependencies with `npm install`.
+2. Start a dev build with `npm run dev` (watches and rebuilds on change).
+3. Generate a production bundle with `npm run build`.
+4. Run `npm run test` to execute the Jest test suite (if/when tests are added).
+
+Use the standard Grafana field options (thresholds, units, value mappings) to control the state/formatting of the computed value.
 
 ### Usage
 
@@ -15,6 +25,14 @@ In the math field you can use the alias names to perform math across series.
 ![Image of using math field](https://raw.github.com/black-mirror-1/singlestat-math/master/src/img/readme/math_field.png)
 
 ## Changelog
+
+## 2.0.0
+* Migrated the panel to the Grafana React plugin platform (compatible with Grafana 12).
+* Replaced the Angular controller with a React renderer, new sparkline/gauge implementations, and math execution backed by `mathjs`.
+* Moved thresholds and value mappings to the standard Grafana field configuration.
+
+## 1.1.7
+* Merged [PR](https://github.com/black-mirror-1/singlestat-math/pull/29) to add new threshold model and new tooltip 
 
 ## 1.1.6
 * Merged [PR](https://github.com/black-mirror-1/singlestat-math/pull/17) to fix gauge color

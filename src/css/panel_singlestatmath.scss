@@ -1,26 +1,48 @@
 .singlestatmath-panel {
-    position: relative;
-    display: table;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transition: background-color 0.2s ease-in-out;
+
+  &--circle {
+    border-radius: 50%;
+  }
+
+  &-value-container {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.1;
+    font-weight: bold;
+    width: 100%;
+    z-index: 1;
+  }
+
+  &-prefix,
+  &-postfix {
+    padding: 0 8px;
+    white-space: nowrap;
+  }
+
+  &-value {
+    white-space: nowrap;
+  }
+
+  &__sparkline {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+  }
+
+  &__gauge {
     width: 100%;
     height: 100%;
   }
-  
-  .singlestatmath-panel-value-container {
-    line-height: 1;
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-    font-size: 3em;
-    font-weight: bold;
-  }
-  
-  .singlestatmath-panel-prefix {
-    padding-right: 20px;
-  }
-  
-  #flotGagueValue0 {
-    font-weight: bold; //please dont hurt me for this!
-  }
-  
+}

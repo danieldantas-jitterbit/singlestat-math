@@ -1,8 +1,8 @@
 {
+  "$schema": "https://raw.githubusercontent.com/grafana/grafana/main/docs/sources/developers/plugins/plugin.schema.json",
   "type": "panel",
   "name": "Singlestat Math",
   "id": "blackmirror1-singlestat-math-panel",
-
   "info": {
     "description": "Single Stat panel with math.",
     "author": {
@@ -14,12 +14,12 @@
       "small": "img/icn-singlestatmath-panel.svg",
       "large": "img/icn-singlestatmath-panel.svg"
     },
-    "version": "1.1.7",
-    "updated": "2018-10-24"
+    "version": "%VERSION%",
+    "updated": "%TODAY%",
+    "links": []
   },
-
   "dependencies": {
-    "grafanaVersion": "5.0.0",
-    "plugins": [ ]
+    "grafanaDependency": ">=10.4.0",
+    "plugins": []
   }
 }
