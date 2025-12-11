@@ -16,7 +16,7 @@ import {
 } from '@grafana/data';
 import { PanelDataErrorView } from '@grafana/runtime';
 import { useTheme2 } from '@grafana/ui';
-import { SinglestatMathOptions, defaultOptions, DEFAULT_THRESHOLDS } from '../types';
+import { SinglestatMathOptions, defaultOptions, DEFAULT_THRESHOLDS, NullPointMode } from '../types';
 import { buildSeriesFromFrame, ProcessedSeries } from '../utils/series';
 import { evaluateMathExpression } from '../utils/math';
 import { Sparkline } from './Sparkline';
@@ -164,8 +164,11 @@ function getPanelValue(args: {
     return getTableValue(firstFrame, fieldConfig.defaults, options, theme, timeZone);
   }
 
+  const resolvedNullPointMode =
+    (fieldConfig.defaults?.nullValueMode as NullPointMode | undefined) ?? options.nullPointMode ?? defaultOptions.nullPointMode;
+
   const processedSeries = data.series
-    .map((frame, index) => buildSeriesFromFrame({ frame, alias: getSeriesAlias(frame, index), nullPointMode: options.nullPointMode }))
+    .map((frame, index) => buildSeriesFromFrame({ frame, alias: getSeriesAlias(frame, index), nullPointMode: resolvedNullPointMode }))
     .filter((series): series is ProcessedSeries => Boolean(series));
 
   if (!processedSeries.length) {
@@ -344,7 +347,10 @@ function getTableField(frame: DataFrame, preferred?: string) {
 }
 
 function getSeriesAlias(frame: DataFrame, index: number) {
-  return frame.name || frame.refId || frame.fields.find((field) => field.type === FieldType.number)?.name || `Series ${index + 1}`;
+  const numericField = frame.fields.find((field) => field.type === FieldType.number);
+  const displayName = numericField?.config?.displayName;
+  const fieldName = numericField?.name;
+  return displayName || frame.name || fieldName || frame.refId || `Series ${index + 1}`;
 }
 
 function parseFontScale(size: string) {
